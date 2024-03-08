@@ -1,0 +1,39 @@
+name: iOS Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macOS-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Xcode
+        uses: actions/setup-xcode@v2
+        with:
+          xcode-version: '13.x'
+
+      - name: Install dependencies
+        run: |
+          sudo gem install cocoapods
+          pod install
+
+      - name: Build
+        run: |
+          xcodebuild clean build -workspace CICDAutomate.xcworkspace -scheme CICDAutomate -destination 'platform=iOS Simulator,name=iPhone 13'
+
+      - name: Archive
+        run: |
+          xcodebuild archive -workspace CICDAutomate.xcworkspace -scheme CICDAutomate -archivePath build/CICDAutomate.xcarchive
+
+      - name: Export archive
+        run: |
+          xcodebuild -exportArchive -archivePath build/CICDAutomate.xcarchive -exportOptionsPlist ExportOptions.plist -exportPath build
