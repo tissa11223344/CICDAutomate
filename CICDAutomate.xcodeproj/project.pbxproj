@@ -13,6 +13,7 @@
 		06E36FB12B99C7DB0099EC0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06E36FAF2B99C7DB0099EC0F /* Main.storyboard */; };
 		06E36FB32B99C7DE0099EC0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06E36FB22B99C7DE0099EC0F /* Assets.xcassets */; };
 		06E36FB62B99C7DE0099EC0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06E36FB42B99C7DE0099EC0F /* LaunchScreen.storyboard */; };
+		06E36FBE2B9AFF3E0099EC0F /* ExportOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06E36FBD2B9AFF3E0099EC0F /* ExportOptions.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		06E36FB22B99C7DE0099EC0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06E36FB52B99C7DE0099EC0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		06E36FB72B99C7DE0099EC0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06E36FBD2B9AFF3E0099EC0F /* ExportOptions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ExportOptions.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				06E36FB22B99C7DE0099EC0F /* Assets.xcassets */,
 				06E36FB42B99C7DE0099EC0F /* LaunchScreen.storyboard */,
 				06E36FB72B99C7DE0099EC0F /* Info.plist */,
+				06E36FBD2B9AFF3E0099EC0F /* ExportOptions.plist */,
 			);
 			path = CICDAutomate;
 			sourceTree = "<group>";
@@ -128,6 +131,7 @@
 				06E36FB62B99C7DE0099EC0F /* LaunchScreen.storyboard in Resources */,
 				06E36FB32B99C7DE0099EC0F /* Assets.xcassets in Resources */,
 				06E36FB12B99C7DB0099EC0F /* Main.storyboard in Resources */,
+				06E36FBE2B9AFF3E0099EC0F /* ExportOptions.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
