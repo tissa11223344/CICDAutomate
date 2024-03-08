@@ -19,11 +19,11 @@ jobs:
       - name: Setup Xcode
         uses: actions/setup-xcode@v2
         with:
-          xcode-version: '15.0'
+          xcode-version: 'latest'
 
       - name: Install dependencies
         run: |
-          sudo gem install cocoapods
+          gem install cocoapods
           pod install
 
       - name: Build
