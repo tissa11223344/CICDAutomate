@@ -26,7 +26,7 @@ jobs:
 
       - name: Build
         run: |
-          xcodebuild clean build -workspace CICDAutomate.xcworkspace -scheme CICDAutomate -destination 'platform=iOS Simulator,name=iPhone 13'
+          xcodebuild clean build -workspace CICDAutomate.xcworkspace -scheme CICDAutomate -destination 'platform=iOS Simulator,name=iPhone 13 Pro Max'
 
       - name: Archive
         run: |
