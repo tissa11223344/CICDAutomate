@@ -28,11 +28,11 @@ jobs:
 
       - name: Build
         run: |
-          xcodebuild clean build -workspace CICDAutomate.xcworkspace -scheme YourScheme -destination 'platform=iOS Simulator,name=iPhone 13'
+          xcodebuild clean build -workspace CICDAutomate.xcworkspace -scheme CICDAutomate -destination 'platform=iOS Simulator,name=iPhone 13'
 
       - name: Archive
         run: |
-          xcodebuild archive -workspace CICDAutomate.xcworkspace -scheme YourScheme -archivePath build/CICDAutomate.xcarchive
+          xcodebuild archive -workspace CICDAutomate.xcworkspace -scheme CICDAutomate -archivePath build/CICDAutomate.xcarchive
 
       - name: Export archive
         run: |
