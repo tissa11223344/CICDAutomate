@@ -37,7 +37,7 @@
 #          xcodebuild -exportArchive -archivePath build/CICDAutomate.xcarchive -exportOptionsPlist ExportOptions.plist -exportPath build
 
 
-name: "Build iOS app"
+name: "Build iOS apps"
 
 #on:
 #  workflow_dispatch:
