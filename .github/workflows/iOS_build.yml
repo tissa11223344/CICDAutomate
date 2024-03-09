@@ -116,7 +116,7 @@
 #          retention-days: 3
 
 
-name: Build & Deploy iOS Application
+name: Build & Deploy iOS
 on:
   push:
     paths:

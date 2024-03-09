@@ -2,13 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>method</key>
-    <string>ad-hoc</string>
-    <key>teamID</key>
-    <string>8H4VCQCSWU</string>
-    <key>compileBitcode</key>
-    <true/>
-    <key>destination</key>
-    <string>export</string>
+	<key>method</key>
+	<string>ad-hoc</string>
+	<key>teamID</key>
+	<string>8H4VCQCSWU</string>
+	<key>compileBitcode</key>
+	<true/>
+	<key>destination</key>
+	<string>export</string>
 </dict>
 </plist>
