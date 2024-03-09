@@ -39,17 +39,17 @@
 
 name: "Build iOS apps"
 
-#on:
-#  workflow_dispatch:
-#    branches: [main]
-
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch:
+    branches: [main]
+
+#on:
+#  push:
+#    branches:
+#      - main
+#  pull_request:
+#    branches:
+#      - main
 
 jobs:
   build_with_signing:
