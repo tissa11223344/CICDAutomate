@@ -13,8 +13,13 @@ jobs:
     runs-on: macOS-latest
 
     steps:
-      - name: check Xcode version
-        run: /usr/bin/xcodebuild -version
+#      - name: check Xcode version
+#        run: /usr/bin/xcodebuild -version
+
+      - name: Set up Xcode
+        uses: actions/setup-xcode@v2
+        with:
+          xcode-version: '15.0' # Specify the correct Xcode version here
 
       - name: checkout repository
         uses: actions/checkout@v3
@@ -24,9 +29,13 @@ jobs:
           gem install cocoapods
           pod install
 
+#      - name: Build
+#        run: |
+#          xcodebuild clean build -workspace CICDAutomate.xcworkspace -scheme CICDAutomate -destination 'platform=iOS Simulator,name=iPhone 13 Pro Max'
+
       - name: Build
         run: |
-          xcodebuild clean build -workspace CICDAutomate.xcworkspace -scheme CICDAutomate -destination 'platform=iOS Simulator,name=iPhone 13 Pro Max'
+          xcodebuild clean build -workspace CICDAutomate.xcworkspace -scheme CICDAutomate -destination 'platform=iOS Simulator,name=Any iOS Simulator Device'
 
       - name: Archive
         run: |
