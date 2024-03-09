@@ -142,8 +142,8 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.2.17  # Replace with your desired tag name
-          release_name: Release v1.2.17 # Replace with your desired release name
+          tag_name: v1.2.18  # Replace with your desired tag name
+          release_name: Release v1.2.18 # Replace with your desired release name
           draft: false
           prerelease: false
         env:
@@ -152,11 +152,11 @@ jobs:
       - name: Find IPA file
         id: find_ipa
         run: |
-          IPA_PATH=$(find $HOME/Library/Developer/Xcode/DerivedData -name '*.ipa' | head -n 1)
+          IPA_PATH=$(find $HOME/Library/Developer/Xcode/DerivedData -name 'CICDAutomate.ipa' | head -n 1)
           echo "::set-output name=ipa_path::$IPA_PATH"
 
       - name: Upload IPA to Release
         run: |
-          gh release upload v1.2.17 ${{ steps.find_ipa.outputs.ipa_path }} --clobber
+          gh release upload v1.2.18 ${{ steps.find_ipa.outputs.ipa_path }} --clobber
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
