@@ -147,26 +147,45 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.2.13  # Replace with your desired tag name
-          release_name: Release v1.2.13 # Replace with your desired release name
+          tag_name: v1.2.14  # Replace with your desired tag name
+          release_name: Release v1.2.14 # Replace with your desired release name
           draft: false
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
-
-      - name: Debug Directory Contents
+          
+          - name: Find IPA file
+        id: find_ipa
         run: |
-          ls -R
-          pwd
-          ls IPAOutput
-      
-      - name: Upload IPA
-        id: upload_ipa
-        uses: actions/upload-release-asset@v1
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: IPAOutput/CICDAutomate.ipa
-          asset_name: CICDAutomate.ipa
-          asset_content_type: application/octet-stream
+        IPA_PATH=$(find $HOME/Library/Developer/Xcode/DerivedData -name '*.ipa' | head -n 1)
+        echo "::set-output name=ipa_path::$IPA_PATH"
+
+          
+         - name: Upload IPA to Release
+        run: |
+         gh release upload v1.2.13 ${{ steps.find_ipa.outputs.ipa_path }} --clobber
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+        GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+
+          
+          
+          
+          
+          
+          
+#      - name: Debug Directory Contents
+#        run: |
+#          ls -R
+#          pwd
+#          ls IPAOutput
+#      
+#      - name: Upload IPA
+#        id: upload_ipa
+#        uses: actions/upload-release-asset@v1
+#        with:
+#          upload_url: ${{ steps.create_release.outputs.upload_url }}
+#          asset_path: IPAOutput/CICDAutomate.ipa
+#          asset_name: CICDAutomate.ipa
+#          asset_content_type: application/octet-stream
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
