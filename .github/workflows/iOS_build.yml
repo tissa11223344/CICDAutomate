@@ -142,8 +142,8 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.2.15  # Replace with your desired tag name
-          release_name: Release v1.2.15 # Replace with your desired release name
+          tag_name: v1.2.17  # Replace with your desired tag name
+          release_name: Release v1.2.17 # Replace with your desired release name
           draft: false
           prerelease: false
         env:
@@ -157,6 +157,6 @@ jobs:
 
       - name: Upload IPA to Release
         run: |
-          gh release upload v1.2.15 ${{ steps.find_ipa.outputs.ipa_path }} --clobber
+          gh release upload v1.2.17 ${{ steps.find_ipa.outputs.ipa_path }} --clobber
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
