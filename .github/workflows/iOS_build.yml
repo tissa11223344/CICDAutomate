@@ -134,22 +134,21 @@ jobs:
         run: |
           gem install cocoapods
           pod install
-      
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.2.23  # Replace with your desired tag name
-          release_name: Release v1.2.23 # Replace with your desired release name
+          tag_name: v1.2.24  # Replace with your desired tag name
+          release_name: Release v1.2.24 # Replace with your desired release name
           draft: false
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
           
-       - name: Build iOS App
-         run: |
-           xcodebuild -workspace CICDAutomate.xcworkspace -scheme CICDAutomate -configuration Debug -destination "platform=iOS Simulator,name=iPhone 12" build
-
+      - name: Build iOS App
+        run: |
+          xcodebuild -workspace CICDAutomate.xcworkspace -scheme CICDAutomate -configuration Debug -destination "platform=iOS Simulator,name=iPhone 12" build
 
       - name: Find IPA file
         id: find_ipa
@@ -165,6 +164,6 @@ jobs:
 
       - name: Upload IPA to Release
         run: |
-          gh release upload v1.2.23 ${{ steps.find_ipa.outputs.ipa_path }} --clobber
+          gh release upload v1.2.24 ${{ steps.find_ipa.outputs.ipa_path }} --clobber
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
