@@ -13,13 +13,8 @@ jobs:
     runs-on: macOS-latest
 
     steps:
-#      - name: check Xcode version
-#        run: /usr/bin/xcodebuild -version
-
-      - name: Set up Xcode
-        uses: actions/setup-xcode@v2
-        with:
-          xcode-version: '15.0' # Specify the correct Xcode version here
+      - name: check Xcode version
+        run: /usr/bin/xcodebuild -version
 
       - name: checkout repository
         uses: actions/checkout@v3
