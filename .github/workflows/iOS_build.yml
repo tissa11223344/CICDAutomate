@@ -130,11 +130,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       
-      # - name: Set up Xcode
-      #   uses: actions/setup-xcode@v2
-      #   with:
-      #     xcode-version: '12'  # Use your desired Xcode version
-      
       - name: Install CocoaPods
         run: |
           gem install cocoapods
@@ -142,50 +137,26 @@ jobs:
       
       - name: Build iOS App
         run: xcodebuild -workspace CICDAutomate.xcworkspace -scheme CICDAutomate -configuration Debug -destination "platform=iOS Simulator,name=iPhone 12" build
-      
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.2.14  # Replace with your desired tag name
-          release_name: Release v1.2.14 # Replace with your desired release name
+          tag_name: v1.2.15  # Replace with your desired tag name
+          release_name: Release v1.2.15 # Replace with your desired release name
           draft: false
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
-          
-          - name: Find IPA file
+
+      - name: Find IPA file
         id: find_ipa
         run: |
-        IPA_PATH=$(find $HOME/Library/Developer/Xcode/DerivedData -name '*.ipa' | head -n 1)
-        echo "::set-output name=ipa_path::$IPA_PATH"
+          IPA_PATH=$(find $HOME/Library/Developer/Xcode/DerivedData -name '*.ipa' | head -n 1)
+          echo "::set-output name=ipa_path::$IPA_PATH"
 
-          
-         - name: Upload IPA to Release
+      - name: Upload IPA to Release
         run: |
-         gh release upload v1.2.13 ${{ steps.find_ipa.outputs.ipa_path }} --clobber
+          gh release upload v1.2.14 ${{ steps.find_ipa.outputs.ipa_path }} --clobber
         env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
-
-          
-          
-          
-          
-          
-          
-#      - name: Debug Directory Contents
-#        run: |
-#          ls -R
-#          pwd
-#          ls IPAOutput
-#      
-#      - name: Upload IPA
-#        id: upload_ipa
-#        uses: actions/upload-release-asset@v1
-#        with:
-#          upload_url: ${{ steps.create_release.outputs.upload_url }}
-#          asset_path: IPAOutput/CICDAutomate.ipa
-#          asset_name: CICDAutomate.ipa
-#          asset_content_type: application/octet-stream
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
