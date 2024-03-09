@@ -37,7 +37,7 @@
 #          xcodebuild -exportArchive -archivePath build/CICDAutomate.xcarchive -exportOptionsPlist ExportOptions.plist -exportPath build
 
 
-name: "Build iOS application"
+name: "Build iOS APPS"
 
 on:
   push:
