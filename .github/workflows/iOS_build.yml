@@ -157,6 +157,6 @@ jobs:
 
       - name: Upload IPA to Release
         run: |
-          gh release upload v1.2.14 ${{ steps.find_ipa.outputs.ipa_path }} --clobber
+          gh release upload v1.2.15 ${{ steps.find_ipa.outputs.ipa_path }} --clobber
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
