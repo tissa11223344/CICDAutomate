@@ -1,4 +1,4 @@
-name: iOS Build Apps
+name: iOS Build App
 
 on:
   push:
@@ -24,13 +24,9 @@ jobs:
           gem install cocoapods
           pod install
 
-#      - name: Build
-#        run: |
-#          xcodebuild clean build -workspace CICDAutomate.xcworkspace -scheme CICDAutomate -destination 'platform=iOS Simulator,name=iPhone 13 Pro Max'
-
-        - name: Build
+      - name: Build
         run: |
-          xcodebuild clean build -workspace CICDAutomate.xcworkspace -scheme CICDAutomate
+          xcodebuild clean build -workspace CICDAutomate.xcworkspace -scheme CICDAutomate -destination 'platform=iOS Simulator,name=iPhone 13 Pro Max'
 
       - name: Archive
         run: |
