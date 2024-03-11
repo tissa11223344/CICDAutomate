@@ -11,7 +11,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       print("CICD PIPELINE AUTOMATIONS FOR APP")
+       print("CICD PIPELINE AUTOMATIONS FOR APPLICATION")
     }
 
 
