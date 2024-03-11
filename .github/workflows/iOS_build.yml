@@ -194,7 +194,7 @@ jobs:
 
       - name: Build iOS App
         run: |
-          xcodebuild -workspace CICDAutomate.xcworkspace -scheme CICDAutomate -configuration Release -archivePath $HOME/build/CICDAutomate.xcarchive archive
+          xcodebuild -workspace CICDAutomate.xcworkspace -scheme CICDAutomate -configuration Release -archivePath $HOME/build/CICDAutomate.xcarchive archive -allowProvisioningUpdates
 
       - name: Export IPA
         run: |
