@@ -116,59 +116,6 @@
 #          retention-days: 3
 
 
-#name: Build & Deploy iOS App
-#on:
-#  push:
-#    paths:
-#      - .github/workflows/iOS_build.yml
-#
-#jobs:
-#  build:
-#    runs-on: macOS-latest
-#    
-#    steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v2
-#      
-#      - name: Install CocoaPods
-#        run: |
-#          gem install cocoapods
-#          pod install
-#
-#      - name: Create Release
-#        id: create_release
-#        uses: actions/create-release@v1
-#        with:
-#          tag_name: v1.2.26  # Replace with your desired tag name
-#          release_name: Release v1.2.26 # Replace with your desired release name
-#          draft: false
-#          prerelease: false
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
-#          
-#      - name: Build iOS App
-#        run: |
-#          xcodebuild -workspace CICDAutomate.xcworkspace -scheme CICDAutomate -configuration Debug -destination "platform=iOS Simulator,name=iPhone 12" build
-#
-#      - name: Find IPA file
-#        id: find_ipa
-#        run: |
-#          echo "Searching for IPA files in $HOME/Library/Developer/Xcode/DerivedData"
-#          IPA_PATH=$(find $HOME/Library/Developer/Xcode/DerivedData -name 'CICDAutomate.ipa' | head -n 1)
-#          if [ -z "$IPA_PATH" ]; then
-#            echo "No IPA file found"
-#            exit 1
-#          fi
-#          echo "Found IPA file at: $IPA_PATH"
-#          echo "::set-output name=ipa_path::$IPA_PATH"
-#
-#      - name: Upload IPA to Release
-#        run: |
-#          gh release upload v1.2.26 ${{ steps.find_ipa.outputs.ipa_path }} --clobber
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
-
-
 name: Build & Deploy iOS App
 on:
   push:
@@ -188,15 +135,26 @@ jobs:
           gem install cocoapods
           pod install
 
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        with:
+          tag_name: v1.2.26  # Replace with your desired tag name
+          release_name: Release v1.2.26 # Replace with your desired release name
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+          
       - name: Build iOS App
         run: |
-          xcodebuild -workspace CICDAutomate.xcworkspace -scheme CICDAutomate -configuration Release -archivePath $HOME/build/CICDAutomate.xcarchive clean archive -allowProvisioningUpdates
+          xcodebuild -workspace CICDAutomate.xcworkspace -scheme CICDAutomate -configuration Debug -destination "platform=iOS Simulator,name=iPhone 12" build
 
       - name: Find IPA file
         id: find_ipa
         run: |
           echo "Searching for IPA files in $HOME/Library/Developer/Xcode/DerivedData"
-          IPA_PATH=$(find $HOME/Library/Developer/Xcode/DerivedData -name '*.ipa' | head -n 1)
+          IPA_PATH=$(find $HOME/Library/Developer/Xcode/DerivedData -name 'CICDAutomate.ipa' | head -n 1)
           if [ -z "$IPA_PATH" ]; then
             echo "No IPA file found"
             exit 1
@@ -206,8 +164,6 @@ jobs:
 
       - name: Upload IPA to Release
         run: |
-          gh release upload v1.2.27 ${{ steps.find_ipa.outputs.ipa_path }} --clobber
+          gh release upload v1.2.26 ${{ steps.find_ipa.outputs.ipa_path }} --clobber
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
-
-
